@@ -1,0 +1,16 @@
+{
+    "code": 0,
+    "count": "1",
+    "data": [{
+        "vc2sdkuserid" : "13434432432432422",
+        "vc2areacode" : "贤心3",
+        "agentId":"",
+        "style":""
+    },{
+        "vc2sdkuserid" : "0998776655555555",
+        "vc2areacode" : "porp心3",
+        "agentId":"13213123",
+        "style":" SMALL"
+    }],
+    "msg": "success"
+}

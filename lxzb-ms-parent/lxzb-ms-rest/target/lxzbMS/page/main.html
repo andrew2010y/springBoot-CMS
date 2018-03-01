@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>首页</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../static/layui/css/layui.css" media="all" />
+	<!--<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />-->
+	<link rel="stylesheet" href="../static/css/main.css" media="all" />
+	
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<div class="layui-inline">
+			用户账单列表
+		</div>
+	</blockquote>
+	<div class="layui-form" id="query_form">
+		<div class="layui-form-item">
+	        <div class="layui-inline">
+	            <label class="layui-form-label">充值订单号</label>
+	            <div class="layui-input-inline">
+	                <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input" id="orderNumber">
+	            </div>
+	        </div>
+	        <div class="layui-inline">
+	            <label class="layui-form-label">充值开始</label>
+	            <div class="layui-input-inline">
+	                <input type="text" name="date" id="beginTime" lay-verify="date" placeholder="请输入充值开始时间" autocomplete="off" class="layui-input">
+	            </div>
+	        </div>
+	        <div class="layui-inline">
+	        	<label class="layui-form-label">充值结束</label>
+	            <div class="layui-input-inline">
+	                <input type="text" name="date" id="endTime" lay-verify="date" placeholder="请输入充值结束时间" autocomplete="off" class="layui-input">
+	            </div>
+	        </div>
+   		</div>
+   		<div class="layui-form-item">
+   			<div class="layui-inline">
+	            <label class="layui-form-label">用户userID</label>
+	            <div class="layui-input-inline">
+	                <input type="text" name="number" lay-verify="required|number"  placeholder="请输入15位以内的字符" autocomplete="off" class="layui-input" id="userID">
+	            </div>
+	        </div>
+	        <div class="layui-inline">
+	            <label class="layui-form-label">所属服务器</label>
+	            <div class="layui-input-inline">
+	                <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input" id="server">
+	            </div>
+	        </div>
+            <div class="layui-inline" style="margin-left: 35px;">
+                <button class="layui-btn" lay-filter="query" id="query" data-type="reload">查询</button>
+            </div>
+   		</div>
+	</div>
+	
+	<div class="layui-form news_list">
+	  	<table id="userBills" lay-filter="test"></table>
+	</div>
+	<script type="text/html" id="barTool">
+		<a class="layui-btn layui-btn-xs" lay-event="detail">指定</a>
+	</script>
+	
+	<script type="text/javascript" src="../static/layui/layui.js"></script>
+	<script type="text/javascript" src="../static/js/main.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.js"></script>
+</body>
+</html>

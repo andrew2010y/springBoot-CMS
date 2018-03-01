@@ -1,0 +1,41 @@
+.layui-table,.layui-table th{ text-align:center; }
+
+/*分页*/
+
+.layui-table-page{
+    text-align: right;
+}
+
+.layui-table-body{
+    overflow: hidden !important;
+}
+
+.layui-form-label{
+    width: 140px;
+    /* text-align: center; */
+    box-sizing: border-box;
+}
+
+.layui-form-label1{
+    width: 40px;
+}
+
+
+
+
+.lay-popup .layui-layer-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+#layui-layer2 .layui-layer-btn a{
+
+    text-align: center;
+}
+
+
+.layui-table-cell{
+    padding: 0 5px;
+    font-size: 12px;
+}
+

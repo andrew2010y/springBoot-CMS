@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzkj.lxzb.rest.modular.user.dao.ThirdbindingcashMappex">
+  <resultMap id="BaseResultMap" type="com.lzkj.lxzb.lxzbEntities.entity.raw.model.Thirdbindingcash">
+    <id column="NUMTHIRDBINDINGCASHID" jdbcType="DECIMAL" property="numthirdbindingcashid" />
+    <result column="NUMUSERID" jdbcType="DECIMAL" property="numuserid" />
+    <result column="NUMCASH" jdbcType="DECIMAL" property="numcash" />
+    <result column="NUMTRANSACTIONNUM" jdbcType="DECIMAL" property="numtransactionnum" />
+    <result column="NUMTAX" jdbcType="DECIMAL" property="numtax" />
+    <result column="DATCREATE" jdbcType="TIMESTAMP" property="datcreate" />
+    <result column="VC2STATUS" jdbcType="VARCHAR" property="vc2status" />
+    <result column="DATCHECK" jdbcType="TIMESTAMP" property="datcheck" />
+    <result column="DATTRANSACTION" jdbcType="TIMESTAMP" property="dattransaction" />
+    <result column="DATFINISH" jdbcType="TIMESTAMP" property="datfinish" />
+    <result column="VC2EARNINGSTYPE" jdbcType="VARCHAR" property="vc2earningstype" />
+    <result column="VC2TRANSACTIONID" jdbcType="VARCHAR" property="vc2transactionid" />
+    <result column="VC2DESC" jdbcType="VARCHAR" property="vc2desc" />
+    <result column="VC2PROCESSFAILSTATUS" jdbcType="VARCHAR" property="vc2processfailstatus" />
+    <result column="VC2THIRDUID" jdbcType="VARCHAR" property="vc2thirduid" />
+    <result column="VC2THIRDTOKEN" jdbcType="VARCHAR" property="vc2thirdtoken" />
+  </resultMap>
+ 
+  <sql id="Base_Column_List">
+    NUMTHIRDBINDINGCASHID, NUMUSERID, NUMCASH, NUMTRANSACTIONNUM, NUMTAX, DATCREATE, 
+    VC2STATUS, DATCHECK, DATTRANSACTION, DATFINISH, VC2EARNINGSTYPE, VC2TRANSACTIONID, 
+    VC2DESC, VC2PROCESSFAILSTATUS, VC2THIRDUID, VC2THIRDTOKEN
+  </sql>
+  
+  <select id="list" parameterType="com.lzkj.lxzb.rest.modular.user.entity.ThirdBindingCashExt" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from LXZB_THIRDBINDINGCASH t
+    where 1=1 
+    <if test="numuserid!=null and numuserid != ''">
+        and  t.numuserid = #{numuserid}
+    </if>
+    <if test="datcreateStart != null">
+  		<![CDATA[ AND t.DATCREATE >= #{datcreateStart}]]>
+  	</if>
+  	<if test="datcreateEnd != null">
+  		<![CDATA[ AND t.DATCREATE <= #{datcreateEnd}]]>
+  	</if>
+  	
+  	<if test="vc2status!=null and vc2status != ''">
+        and  t.vc2status = #{vc2status}
+    </if>
+  	<if test="numtransactionnumMin != null and numtransactionnumMin != ''">
+  		<![CDATA[ AND t.numtransactionnum >= #{numtransactionnumMin}]]>
+  	</if>
+  	
+  	<if test="numtransactionnumMax != null and numtransactionnumMax != ''">
+  		<![CDATA[ AND t.numtransactionnum <= #{numtransactionnumMax}]]>
+  	</if>
+  	
+    order by t.DATCREATE DESC
+  </select>
+  
+  	<!-- 支付宝提现审核(拒绝) -->
+	<update id="AlipayWithdrawalsExamineRefuse" parameterType="com.lzkj.lxzb.lxzbEntities.entity.raw.model.Thirdbindingcash">
+		UPDATE LXZB_THIRDBINDINGCASH 
+		SET VC2STATUS = 'ORDER_CHECK_REFUSE' ,
+		DATCHECK = SYSDATE, VC2PROCESSFAILSTATUS = 'N'   
+		WHERE NUMTHIRDBINDINGCASHID = #{numthirdbindingcashid} 
+		AND VC2STATUS = 'ORDER_CREATE'
+	</update>
+	
+	<!-- 支付宝提现审核通过(批量) -->
+	<update id="AlipayWithdrawalsBatchExamineAdopt">
+	
+		UPDATE LXZB_THIRDBINDINGCASH SET VC2STATUS = 'ORDER_CHECK_SUCCESS' , DATCHECK = SYSDATE  
+		
+		WHERE VC2STATUS = 'ORDER_CREATE' AND  NUMTHIRDBINDINGCASHID IN 
+		
+	    <foreach item="item" index="ind" collection="array" open="(" separator="," close=")">
+		<!-- <foreach collection="list" index="index" item="item"  separator="," open="(" close=")"> -->
+	        #{item}
+	    </foreach>
+		
+	</update>
+ 
+</mapper>

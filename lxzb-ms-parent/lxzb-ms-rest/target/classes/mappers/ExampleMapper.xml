@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzkj.lxzb.rest.modular.dao.ExampleDAO">
+  <resultMap id="BaseResultMap" type="com.lzkj.lxzb.lxzbEntities.entity.raw.model.ChargeRecord">
+    <id column="NUMCHARGERECORDEID" jdbcType="DECIMAL" property="numchargerecordeid" />
+    <result column="NUMUSERID" jdbcType="DECIMAL" property="numuserid" />
+    <result column="NUMRECOMMANDUSERID" jdbcType="DECIMAL" property="numrecommanduserid" />
+    <result column="NUMGAMEROLEID" jdbcType="DECIMAL" property="numgameroleid" />
+    <result column="VC2ORDERCODE" jdbcType="VARCHAR" property="vc2ordercode" />
+    <result column="NUMCHARGENUM" jdbcType="DECIMAL" property="numchargenum" />
+    <result column="VC2TRANSACTIONDAY" jdbcType="VARCHAR" property="vc2transactionday" />
+    <result column="VC2PROCESSSTATUS" jdbcType="VARCHAR" property="vc2processstatus" />
+    <result column="DATCREATE" jdbcType="TIMESTAMP" property="datcreate" />
+    <result column="DATUPDATE" jdbcType="TIMESTAMP" property="datupdate" />
+    <result column="VC2PAYTYPE" jdbcType="VARCHAR" property="vc2paytype" />
+  </resultMap>
+
+  <select id="getRecords" resultMap="BaseResultMap">
+      select * from LXZB_CHARGE_RECORD
+  </select>
+
+</mapper>

@@ -1,0 +1,16 @@
+[{
+	"title" : "用户账单列表",
+	"icon" : "&#xe62d;",
+	"href" : "page/main.html",
+	"spread" : false
+},{
+	"title" : "用户提现列表",
+	"icon" : "&#xe63c;",
+	"href" : "page/userWithdraw/userWithdraw.html",
+	"spread" : false
+},{
+	"title" : "游戏区服列表",
+	"icon" : "&#xe64d;",
+	"href" : "page/gameArea/gameArea.html",
+	"spread" : false
+}]

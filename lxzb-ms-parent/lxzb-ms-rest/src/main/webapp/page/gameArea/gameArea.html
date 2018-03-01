@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>游戏区服列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="./gameArea.css" media="all" />
+</head>
+<body class="childrenBody">
+<blockquote class="layui-elem-quote news_search">
+    <div class="layui-inline">
+        游戏区服列表
+    </div>
+</blockquote>
+<div class="layui-form news_list layui-fluid">
+    <div class="layui-row">
+        <div class=" layui-col-xs4 layui-col-sm4 layui-col-md4 ">
+            <label class="layui-form-label">区服ID:</label>
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md6 ">
+                <input id="areaID" type="text" placeholder="区服ID"  class="layui-input">
+            </div>
+        </div>
+        <div class=" layui-col-xs4 layui-col-sm4 layui-col-md4 ">
+            <label class="layui-form-label">代理商类型:</label>
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md6 ">
+                <select name="type" lay-filter="" id="gameSelectValue">
+                    <option value="1">无</option>
+                    <option value="SMALL">小代理商</option>
+                    <option value="SPECIAL">特殊代理商</option>
+                    <option value="BIG">大代理商</option>
+                </select>
+            </div>
+        </div>
+        <div class=" layui-col-xs2 layui-col-sm2 layui-col-md2 " style="text-align:center;">
+            <button class="layui-btn" lay-submit lay-filter="formSearch">查询</button>
+        </div>
+
+    </div>
+
+    <div class="layui-row">
+        <table id="gameArea" ></table>
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript" src="../../static/layui/layui.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.js"></script>
+<script type="text/javascript" src="./gameArea.js"></script>
+
+</body>
+</html>

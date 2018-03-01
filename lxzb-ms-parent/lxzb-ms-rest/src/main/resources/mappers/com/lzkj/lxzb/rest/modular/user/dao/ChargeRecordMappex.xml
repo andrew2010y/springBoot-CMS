@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzkj.lxzb.rest.modular.user.dao.ChargeRecordMappex">
+	<resultMap id="BaseResultMap" type="com.lzkj.lxzb.rest.modular.user.entity.ChargeRecordExt">
+		<id column="NUMCHARGERECORDEID" jdbcType="DECIMAL" property="numchargerecordeid" />
+		<result column="NUMUSERID" jdbcType="DECIMAL" property="numuserid" />
+		<result column="NUMRECOMMANDUSERID" jdbcType="DECIMAL" property="numrecommanduserid" />
+		<result column="NUMGAMEROLEID" jdbcType="DECIMAL" property="numgameroleid" />
+		<result column="VC2ORDERCODE" jdbcType="VARCHAR" property="vc2ordercode" />
+		<result column="NUMCHARGENUM" jdbcType="DECIMAL" property="numchargenum" />
+		<result column="VC2TRANSACTIONDAY" jdbcType="VARCHAR" property="vc2transactionday" />
+		<result column="VC2PROCESSSTATUS" jdbcType="VARCHAR" property="vc2processstatus" />
+		<result column="DATCREATE" jdbcType="TIMESTAMP" property="datcreate" />
+		<result column="DATUPDATE" jdbcType="TIMESTAMP" property="datupdate" />
+		<result column="VC2PAYTYPE" jdbcType="VARCHAR" property="vc2paytype" />
+		<result column="VC2AREACODE" jdbcType="VARCHAR" property="vc2areacode" />
+		<result column="agent_id" jdbcType="DECIMAL" property="agentId" />
+	</resultMap>
+
+	<select id="list" parameterType="com.lzkj.lxzb.rest.modular.user.entity.ChargeRecordExt" resultMap="BaseResultMap">
+		select t.numchargerecordeid,
+		t.vc2ordercode,
+		t.numuserid,
+		(SELECT vc2sdkusername from lxzb_gameuser g where g.numuserid=t.numuserid) as vc2sdkusername,
+		s.vc2areacode,
+		t.numrecommanduserid,
+    	(SELECT vc2sdkusername from lxzb_gameuser g where g.numuserid=t.numrecommanduserid) as vc2sdkrecommandusername,
+		t.numchargenum ,
+		s.NUMUSERID as agent_id,
+   		(SELECT vc2sdkusername from lxzb_gameuser g where g.numuserid=s.NUMUSERID) as vc2sdkagentusername,
+		t.datorder
+		from lxzb_charge_record t,lxzb_gamerole r,
+		lxzb_areaserver s
+		where t.numgameroleid=r.numgameroleid
+		and r.numareaserverid=s.numareaserverid
+		
+		<if test="vc2ordercode!=null and vc2ordercode != ''">
+          AND  t.vc2ordercode = #{vc2ordercode}
+        </if>
+        <if test="vc2sdkusername!=null and vc2sdkusername != ''">
+         AND t.numuserid = (
+        	SELECT numuserid
+			FROM lxzb_gameuser G
+			WHERE G.vc2sdkusername = #{vc2sdkusername}
+           ) 
+        </if>
+        
+        <if test="datorderStart != null">
+  			<![CDATA[ AND t.datorder >= #{datorderStart}]]>
+  		</if>
+  		<if test="datorderEnd != null">
+  			<![CDATA[ AND t.datorder <= #{datorderEnd}]]>
+  		</if>
+     
+  		<if test="vc2areacode!=null and vc2areacode != ''">
+           AND s.vc2areacode = #{vc2areacode}
+        </if>
+         
+         order by t.datcreate desc
+	</select>
+	
+</mapper>

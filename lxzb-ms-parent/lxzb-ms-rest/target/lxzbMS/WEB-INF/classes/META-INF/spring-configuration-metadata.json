@@ -1,0 +1,97 @@
+{
+  "hints": [],
+  "properties": [
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.GunsProperties",
+      "name": "guns.file-upload-path",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.GunsProperties",
+      "name": "guns.kaptcha-open",
+      "defaultValue": false,
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.GunsProperties",
+      "name": "guns.session-invalidate-time",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.GunsProperties",
+      "name": "guns.session-validation-interval",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.GunsProperties",
+      "name": "guns.spring-session-open",
+      "defaultValue": false,
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.GunsProperties",
+      "name": "guns.swagger-open",
+      "defaultValue": false,
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.JwtProperties",
+      "name": "jwt.auth-path",
+      "defaultValue": "auth",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.JwtProperties",
+      "name": "jwt.expiration",
+      "defaultValue": 604800,
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.JwtProperties",
+      "name": "jwt.header",
+      "defaultValue": "Authorization",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.JwtProperties",
+      "name": "jwt.md5-key",
+      "defaultValue": "randomKey",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.JwtProperties",
+      "name": "jwt.secret",
+      "defaultValue": "defaultSecret",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.RestProperties",
+      "name": "rest.auth-open",
+      "defaultValue": true,
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.RestProperties",
+      "name": "rest.sign-open",
+      "defaultValue": true,
+      "type": "java.lang.Boolean"
+    }
+  ],
+  "groups": [
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.GunsProperties",
+      "name": "guns",
+      "type": "com.lzkj.lxzb.rest.config.properties.GunsProperties"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.JwtProperties",
+      "name": "jwt",
+      "type": "com.lzkj.lxzb.rest.config.properties.JwtProperties"
+    },
+    {
+      "sourceType": "com.lzkj.lxzb.rest.config.properties.RestProperties",
+      "name": "rest",
+      "type": "com.lzkj.lxzb.rest.config.properties.RestProperties"
+    }
+  ]
+}

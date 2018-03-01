@@ -345,7 +345,7 @@ public class BeanKit {
      *
      * @param source      源Bean对象
      * @param target      目标Bean对象
-     * @param copyOptions 拷贝选项，见 {@link com.lzkj.lxzb.core.support.BeanKit.CopyOptions}
+     * @param copyOptions 拷贝选项，见 {@link CopyOptions}
      */
     public static void copyProperties(Object source, Object target, CopyOptions copyOptions) {
         if (null == copyOptions) {

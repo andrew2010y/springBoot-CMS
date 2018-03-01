@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzkj.lxzb.rest.modular.user.dao.AreaserverMapperx">
+  <resultMap id="BaseResultMap" type="com.lzkj.lxzb.rest.modular.user.entity.AreaserverExt">
+    <id column="NUMAREASERVERID" jdbcType="DECIMAL" property="numareaserverid" />
+    <result column="NUMUSERID" jdbcType="DECIMAL" property="numuserid" />
+    <result column="VC2AREANAME" jdbcType="VARCHAR" property="vc2areaname" />
+    <result column="VC2AREACODE" jdbcType="VARCHAR" property="vc2areacode" />
+    <result column="DATCREATE" jdbcType="TIMESTAMP" property="datcreate" />
+    <result column="DATCOMMISSION" jdbcType="TIMESTAMP" property="datcommission" />
+    <result column="vc2type" jdbcType="VARCHAR" property="vc2type" />
+    <result column="vc2sdkusername" jdbcType="VARCHAR" property="vc2sdkusername" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    t.NUMAREASERVERID, t.NUMUSERID, t.VC2AREANAME, 
+    t.VC2AREACODE, t.DATCREATE, t.DATCOMMISSION
+  </sql>
+ 
+  <select id="list" parameterType="com.lzkj.lxzb.rest.modular.user.entity.AreaserverExt" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    , p.vc2type,u.vc2sdkusername
+    from LXZB_AREASERVER t
+    left join lxzb_gameuser u
+    on t.numuserid = u.numuserid
+    left join lxzb_user_position p
+    on u.numuserpositionid=p.numuserpositionid
+    WHERE 1=1 
+    <if test="vc2areacode!=null and vc2areacode != ''">
+       AND t.VC2AREACODE = #{vc2areacode}
+    </if>
+    <if test="vc2type!=null and vc2type != ''">
+       AND p.vc2type = #{vc2type}
+    </if>
+      order by t.datcreate desc
+  </select>
+   
+</mapper>

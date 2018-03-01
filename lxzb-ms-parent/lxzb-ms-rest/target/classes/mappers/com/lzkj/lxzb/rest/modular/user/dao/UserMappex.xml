@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzkj.lxzb.rest.modular.user.dao.UserMappex">
+	<resultMap id="BaseResultMap" type="com.lzkj.lxzb.rest.modular.user.entity.UserExt">
+		<result column="VC2SDKUSERNAME" jdbcType="VARCHAR" property="vc2sdkusername" />
+		<result column="VC2AREANAME" jdbcType="VARCHAR" property="vc2areaname" />
+		<result column="VC2AREACODE" jdbcType="VARCHAR" property="vc2areacode" />
+		<result column="vc2type" jdbcType="VARCHAR" property="vc2type" />
+		<result column="numuserpositionid" jdbcType="VARCHAR" property="numuserpositionid" />
+	</resultMap>
+
+	<select id="list" parameterType="String" resultMap="BaseResultMap">
+		select
+			u.numuserid, 
+			u.VC2SDKUSERNAME,p.vc2type,
+			p.numuserpositionid 
+			from LXZB_GAMEUSER u
+			left join  lxzb_user_position p
+			on u.numuserpositionid=p.numuserpositionid
+		where 1=1 AND u.VC2SDKUSERNAME = #{sdkUserName}
+		<!-- <if test="sdkUserName!=null and sdkUserName != ''">
+           AND u.VC2SDKUSERNAME = #{sdkUserName}
+        </if>  -->
+	</select>
+	
+</mapper>

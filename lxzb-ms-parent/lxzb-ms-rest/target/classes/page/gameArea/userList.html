@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="./userList.css" media="all" />
+</head>
+<body class="childrenBody">
+<blockquote class="layui-elem-quote news_search">
+    <div class="layui-inline">
+        用户列表
+    </div>
+</blockquote>
+<div class="layui-form" id="query_form">
+    <div class="layui-form-item">
+
+        <div class="layui-inline">
+            <label class="layui-form-label">用户名:</label>
+            <div class="layui-input-inline">
+                <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input" id="userName"  maxlength="32">
+            </div>
+        </div>
+        <div class="layui-inline" style="margin-left: 35px;">
+            <button class="layui-btn" lay-filter="query" id="query" data-type="reload">查询</button>
+        </div>
+        <div class="layui-inline" style="float:right">
+            <button class="layui-btn"  id="return" >返回上一页</button>
+        </div>
+    </div>
+</div>
+
+<div class="layui-form news_list">
+    <table id="userList" lay-filter="test"></table>
+</div>
+<script type="text/html" id="barTool">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">选择该用户</a>
+</script>
+
+<script type="text/javascript" src="../../static/layui/layui.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.js"></script>
+<script type="text/javascript" src="./userList.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">批准</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">拒绝</a>
+</script>
+
+</body>
+</html>
